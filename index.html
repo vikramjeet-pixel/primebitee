@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Bite Ventures Ltd — B2B Logistics Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --navy: #fbf7ef;
+            --navy-mid: #f3ecd9;
+            --navy-light: #eaddc9;
+            --gold: #e66a22;
+            --gold-light: #f9833e;
+            --gold-pale: #ffc8a6;
+            --white: #4a2c14;
+            --grey: #9e754d;
+            --grey-light: #805936;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 4rem;
+            background: rgba(251, 247, 239, 0.93);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(230, 106, 34, 0.15);
+            transition: padding 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 4rem;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+
+        .nav-logo span {
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--grey-light);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .nav-cta {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold);
+            border: none;
+            cursor: pointer;
+            padding: 0.6rem 1.5rem;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-light);
+        }
+
+        /* PAGES */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(251, 247, 239, 0.97) 0%, rgba(251, 247, 239, 0.75) 50%, rgba(243, 236, 217, 0.88) 100%),
+                repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(230, 106, 34, 0.025) 40px, rgba(230, 106, 34, 0.025) 41px);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .road-lines {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 60px, transparent 60px, transparent 120px);
+            animation: roadMove 2s linear infinite;
+            opacity: 0.35;
+        }
+
+        @keyframes roadMove {
+            to {
+                transform: translateX(-120px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 9rem 4rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 5vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+        }
+
+        .hero-heading em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: var(--grey);
+            line-height: 1.85;
+            margin-bottom: 3rem;
+            max-width: 480px;
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold);
+            border: none;
+            cursor: pointer;
+            padding: 1rem 2.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: transparent;
+            border: 1px solid var(--gold);
+            cursor: pointer;
+            padding: 1rem 2.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(230, 106, 34, 0.1);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5px;
+            background: rgba(230, 106, 34, 0.12);
+        }
+
+        .stat-box {
+            background: rgba(243, 236, 217, 0.7);
+            padding: 2rem;
+            border-left: 3px solid transparent;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .stat-box:hover {
+            border-left-color: var(--gold);
+            background: var(--navy-light);
+        }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-top: 0.5rem;
+        }
+
+        /* TICKER */
+        .ticker-wrap {
+            background: var(--gold);
+            overflow: hidden;
+            padding: 0.9rem 0;
+        }
+
+        .ticker {
+            display: flex;
+            animation: ticker 35s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker-item {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--navy);
+            padding: 0 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .ticker-item::after {
+            content: '◆';
+            font-size: 0.45rem;
+            opacity: 0.5;
+        }
+
+        @keyframes ticker {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 7rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        /* CORE FOUR */
+        .core-four-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5px;
+            background: rgba(230, 106, 34, 0.1);
+            margin-top: 4rem;
+        }
+
+        .core-card {
+            background: var(--navy-mid);
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .core-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            transform-origin: left;
+        }
+
+        .core-card:hover {
+            background: var(--navy-light);
+        }
+
+        .core-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .core-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .core-card h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .core-card p {
+            font-size: 0.88rem;
+            color: var(--grey);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .core-num {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(230, 106, 34, 0.06);
+            line-height: 1;
+        }
+
+        /* MAP */
+        .map-section {
+            background: var(--navy-mid);
+            padding: 0;
+        }
+
+        .map-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 7rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hub-dot {
+            cursor: pointer;
+        }
+
+        .hub-dot circle {
+            transition: all 0.3s;
+        }
+
+        .hub-dot:hover circle:first-child {
+            r: 14;
+            opacity: 1;
+        }
+
+        .hub-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 11px;
+            fill: var(--grey-light);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .uk-map-svg {
+            width: 100%;
+            max-width: 380px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* SOLUTIONS */
+        .solutions-hero {
+            padding: 10rem 4rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sol-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px;
+            background: rgba(230, 106, 34, 0.1);
+            margin-top: 4rem;
+        }
+
+        .sol-card {
+            background: var(--navy-mid);
+            padding: 3.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .sol-card:hover {
+            background: var(--navy-light);
+        }
+
+        .sol-card.featured {
+            background: var(--gold);
+        }
+
+        .sol-card.featured * {
+            color: var(--navy) !important;
+        }
+
+        .sol-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: rgba(230, 106, 34, 0.18);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .sol-card.featured .sol-num {
+            color: rgba(251, 247, 239, 0.12);
+        }
+
+        .sol-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .sol-card p {
+            font-size: 0.88rem;
+            color: var(--grey);
+            line-height: 1.75;
+            font-weight: 300;
+            flex: 1;
+        }
+
+        .sol-card.featured p {
+            color: rgba(251, 247, 239, 0.65);
+        }
+
+        .sol-tag {
+            margin-top: 2rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sol-card.featured .sol-tag {
+            color: var(--navy);
+        }
+
+        .sol-tag::after {
+            content: '→';
+        }
+
+        .sla-band {
+            background: var(--navy-mid);
+            padding: 5rem 4rem;
+        }
+
+        .sla-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .sla-pct {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .sla-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .sla-item h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .sla-item p {
+            font-size: 0.88rem;
+            color: var(--grey);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        /* DIRECTORATE */
+        .dir-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--navy-mid);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dir-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, var(--navy) 40%, transparent 100%), repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(230, 106, 34, 0.02) 60px, rgba(230, 106, 34, 0.02) 61px);
+        }
+
+        .dir-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 9rem 4rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .dir-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--navy-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            opacity: 0.35;
+            border: 1px solid rgba(230, 106, 34, 0.2);
+            position: relative;
+        }
+
+        .dir-photo-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--gold);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--navy);
+            text-align: center;
+        }
+
+        .dir-quote {
+            margin: 2.5rem 0;
+            padding: 2rem 2rem 2rem 2.5rem;
+            border-left: 3px solid var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            line-height: 1.55;
+            color: var(--gold-pale);
+        }
+
+        .dir-quote cite {
+            display: block;
+            margin-top: 0.8rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.7rem;
+            font-style: normal;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .guarantee-section {
+            background: var(--gold);
+            padding: 6rem 4rem;
+        }
+
+        .guarantee-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .guarantee-inner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+
+        .guarantee-inner p {
+            color: rgba(251, 247, 239, 0.65);
+            line-height: 1.85;
+            font-weight: 300;
+            margin-top: 1rem;
+        }
+
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-style: italic;
+            color: var(--navy);
+            margin-top: 2rem;
+            border-top: 1px solid rgba(251, 247, 239, 0.15);
+            padding-top: 1rem;
+        }
+
+        .sig-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(251, 247, 239, 0.4);
+            margin-top: 0.3rem;
+        }
+
+        /* COMPLIANCE */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px;
+            background: rgba(230, 106, 34, 0.1);
+            margin-top: 4rem;
+        }
+
+        .fleet-card {
+            background: var(--navy-mid);
+            padding: 2.5rem;
+            transition: background 0.3s;
+        }
+
+        .fleet-card:hover {
+            background: var(--navy-light);
+        }
+
+        .fleet-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .fleet-card h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .fleet-card p {
+            font-size: 0.88rem;
+            color: var(--grey);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .fleet-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-right: 0.4rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold);
+            padding: 0.2rem 0.6rem;
+        }
+
+        .compliance-band {
+            background: var(--navy-mid);
+            padding: 5rem 4rem;
+        }
+
+        .compliance-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .compliance-cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .comp-col h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .comp-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .comp-list li {
+            font-size: 0.85rem;
+            color: var(--grey);
+            padding: 0.45rem 0;
+            border-bottom: 1px solid rgba(230, 106, 34, 0.07);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 300;
+        }
+
+        .comp-list li::before {
+            content: '◆';
+            font-size: 0.38rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        /* PARTNER */
+        .partner-hero {
+            padding: 10rem 4rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem 7rem;
+        }
+
+        .quote-form {
+            background: var(--navy-mid);
+            padding: 3rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row label {
+            display: block;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-row input,
+        .form-row select,
+        .form-row textarea {
+            width: 100%;
+            background: var(--navy);
+            border: 1px solid rgba(230, 106, 34, 0.2);
+            color: var(--white);
+            padding: 0.8rem 1rem;
+            font-family: 'Barlow', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .form-row input:focus,
+        .form-row select:focus,
+        .form-row textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .form-row select option {
+            background: var(--navy);
+        }
+
+        .form-row textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--navy);
+            background: var(--gold);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .form-submit:hover {
+            background: var(--gold-light);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .form-success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .form-success h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        .form-success p {
+            color: var(--grey);
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        .contact-card {
+            background: var(--navy-mid);
+            padding: 2.5rem;
+            margin-bottom: 1.5px;
+        }
+
+        .contact-card h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-card p {
+            color: var(--grey);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .priority-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--white);
+            margin: 0.5rem 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #f0e8db;
+            padding: 4rem;
+            border-top: 1px solid rgba(230, 106, 34, 0.1);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--grey);
+            line-height: 1.75;
+            margin-top: 1rem;
+            font-weight: 300;
+        }
+
+        footer h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        footer ul li a {
+            font-size: 0.85rem;
+            color: var(--grey);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s;
+            font-weight: 300;
+        }
+
+        footer ul li a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(230, 106, 34, 0.07);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            color: var(--grey);
+            font-weight: 300;
+        }
+
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-d1 {
+            transition-delay: 0.1s;
+        }
+
+        .fade-in-d2 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in-d3 {
+            transition-delay: 0.3s;
+        }
+
+        .fade-in-d4 {
+            transition-delay: 0.4s;
+        }
+
+        /* Nav Mobile Toggle Styles */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle .bar {
+            width: 100%;
+            height: 2px;
+            background-color: var(--gold);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+        }
+
+        .menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(251, 247, 239, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1);
+                display: flex;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+            }
+
+            .hero-content,
+            .map-inner,
+            .dir-hero-content,
+            .partner-grid,
+            .guarantee-inner,
+            .sla-inner {
+                grid-template-columns: 1fr;
+            }
+
+            section,
+            .solutions-hero,
+            .partner-hero {
+                padding: 5rem 1.5rem;
+            }
+
+            .partner-grid {
+                padding: 0 1.5rem 5rem;
+            }
+
+            .core-four-grid,
+            .sol-grid,
+            .fleet-grid,
+            .compliance-cols {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .sla-items {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            footer,
+            .sla-band,
+            .compliance-band,
+            .guarantee-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-content {
+                padding: 7rem 1.5rem 4rem;
+            }
+
+            .dir-hero-content {
+                padding: 8rem 1.5rem 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav id="mainNav">
+        <div class="nav-logo" onclick="showPage('home')">Prime Bite <span>Ventures</span></div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home')">Home</a></li>
+            <li><a onclick="showPage('solutions')">Solutions</a></li>
+            <li><a onclick="showPage('directorate')">The Directorate</a></li>
+            <li><a onclick="showPage('compliance')">Compliance & Fleet</a></li>
+            <li><a onclick="showPage('partner')">Partner With Us</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="nav-cta" onclick="showPage('partner')">Request Partnership</button>
+            <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+        <div class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-grid"></div>
+            <div class="road-lines"></div>
+            <div class="hero-content">
+                <div>
+                    <div class="hero-eyebrow fade-in">National B2B Logistics — United Kingdom</div>
+                    <h1 class="hero-heading fade-in fade-in-d1">The <em>Command</em><br>Centre of UK<br>Distribution
+                    </h1>
+                    <p class="hero-sub fade-in fade-in-d2">Prime Bite Ventures Ltd delivers enterprise-grade contract
+                        logistics across the United Kingdom. When continuity is non-negotiable, our network is your
+                        answer.</p>
+                    <div class="hero-btns fade-in fade-in-d3">
+                        <button class="btn-primary" onclick="showPage('partner')">Engage Our Services</button>
+                        <button class="btn-outline" onclick="showPage('solutions')">View Solutions</button>
+                    </div>
+                </div>
+                <div class="hero-stats fade-in fade-in-d2">
+                    <div class="stat-box">
+                        <div class="stat-num">99<span style="font-size:1.4rem">%+</span></div>
+                        <div class="stat-label">On-Time Delivery Rate</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">24/7</div>
+                        <div class="stat-label">Operational Coverage</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">12+</div>
+                        <div class="stat-label">UK Logistics Hubs</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">100%</div>
+                        <div class="stat-label">GPS Fleet Tracked</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <span class="ticker-item">Pharmaceuticals</span><span class="ticker-item">Aerospace
+                    Components</span><span class="ticker-item">High-Street Retail</span><span
+                    class="ticker-item">Automotive Parts</span><span class="ticker-item">Electronics</span><span
+                    class="ticker-item">Food &amp; Beverage</span><span class="ticker-item">Healthcare
+                    Equipment</span><span class="ticker-item">Financial Services</span><span
+                    class="ticker-item">Construction Materials</span><span class="ticker-item">Government
+                    Contracts</span><span class="ticker-item">Pharmaceuticals</span><span class="ticker-item">Aerospace
+                    Components</span><span class="ticker-item">High-Street Retail</span><span
+                    class="ticker-item">Automotive Parts</span><span class="ticker-item">Electronics</span><span
+                    class="ticker-item">Food &amp; Beverage</span><span class="ticker-item">Healthcare
+                    Equipment</span><span class="ticker-item">Financial Services</span><span
+                    class="ticker-item">Construction Materials</span><span class="ticker-item">Government
+                    Contracts</span>
+            </div>
+        </div>
+
+        <section>
+            <div class="section-label">Our Foundation</div>
+            <h2 class="section-title">Built on Four <em>Unbreakable</em> Pillars</h2>
+            <p style="color:var(--grey);max-width:600px;font-weight:300;line-height:1.85;">Every engagement with Prime
+                Bite Ventures is underpinned by principles embedded into our operational DNA from day one.</p>
+            <div class="core-four-grid">
+                <div class="core-card fade-in">
+                    <div class="core-num">01</div>
+                    <div class="core-icon">🎯</div>
+                    <h3>Reliability</h3>
+                    <p>Consistent, predictable performance across every route, every day. Our clients build their supply
+                        chains around our 99%+ on-time delivery promise because we have never given them reason to doubt
+                        it.</p>
+                </div>
+                <div class="core-card fade-in fade-in-d1">
+                    <div class="core-num">02</div>
+                    <div class="core-icon">📈</div>
+                    <h3>Scalability</h3>
+                    <p>From a single dedicated van to a national multi-vehicle deployment, our infrastructure scales
+                        precisely to your commercial requirements without compromising service integrity or SLA
+                        thresholds.</p>
+                </div>
+                <div class="core-card fade-in fade-in-d2">
+                    <div class="core-num">03</div>
+                    <div class="core-icon">🛡️</div>
+                    <h3>Compliance</h3>
+                    <p>Full regulatory adherence across all UK transport legislation. Our fleet operates under rigorous
+                        safety protocols, with comprehensive insurance and documented audit trails ready for enterprise
+                        procurement review.</p>
+                </div>
+                <div class="core-card fade-in fade-in-d3">
+                    <div class="core-num">04</div>
+                    <div class="core-icon">⚡</div>
+                    <h3>Technology</h3>
+                    <p>Real-time GPS fleet visibility, digital proof of delivery, and predictive route optimisation
+                        tools give our clients transparent, data-driven oversight of every consignment under our care.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="map-section">
+            <div class="map-inner">
+                <div>
+                    <div class="section-label">National Reach</div>
+                    <h2 class="section-title">Strategically <em>Positioned</em> Across the UK</h2>
+                    <p style="color:var(--grey);line-height:1.85;margin-bottom:2.5rem;font-weight:300;">Our network of
+                        operational hubs spans the full length of Great Britain — from London's commercial core to the
+                        industrial heartlands of the North, ensuring same-day critical coverage wherever your business
+                        demands it.</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div style="padding:1.2rem;background:var(--navy);border-left:2px solid var(--gold);">
+                            <div
+                                style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">
+                                Primary Hubs</div>
+                            <div style="font-size:0.84rem;color:var(--grey);font-weight:300;">London · Manchester ·
+                                Birmingham · Leeds · Bristol</div>
+                        </div>
+                        <div
+                            style="padding:1.2rem;background:var(--navy);border-left:2px solid rgba(230, 106, 34,0.35);">
+                            <div
+                                style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">
+                                Regional Depots</div>
+                            <div style="font-size:0.84rem;color:var(--grey);font-weight:300;">Newcastle · Edinburgh ·
+                                Cardiff · Nottingham</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <svg class="uk-map-svg" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="cb" />
+                                <feMerge>
+                                    <feMergeNode in="cb" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                            <radialGradient id="mapbg" cx="50%" cy="50%">
+                                <stop offset="0%" stop-color="#eaddc9" />
+                                <stop offset="100%" stop-color="#f3ecd9" />
+                            </radialGradient>
+                        </defs>
+                        <!-- UK shape simplified -->
+                        <path
+                            d="M138,32 L158,26 L175,38 L182,54 L178,72 L188,88 L196,108 L202,128 L208,150 L212,170 L215,192 L210,210 L220,228 L224,248 L218,268 L212,282 L220,298 L218,316 L210,330 L200,342 L188,350 L175,358 L165,366 L155,372 L148,378 L140,372 L128,365 L118,356 L108,344 L102,328 L106,312 L100,296 L96,280 L100,264 L95,248 L90,232 L96,216 L102,202 L96,186 L90,170 L96,154 L102,138 L108,122 L103,106 L100,88 L106,72 L118,56 L128,42 Z"
+                            fill="url(#mapbg)" stroke="rgba(230, 106, 34,0.4)" stroke-width="1.5" />
+                        <path d="M128,42 L118,56 L106,72 L100,88 L103,106 L108,100 L114,84 L112,68 L120,54 Z"
+                            fill="rgba(243, 236, 217,0.8)" stroke="rgba(230, 106, 34,0.25)" stroke-width="1" />
+                        <!-- Grid -->
+                        <line x1="88" y1="105" x2="225" y2="105" stroke="rgba(230, 106, 34,0.04)" stroke-width="1" />
+                        <line x1="88" y1="200" x2="225" y2="200" stroke="rgba(230, 106, 34,0.04)" stroke-width="1" />
+                        <line x1="88" y1="295" x2="225" y2="295" stroke="rgba(230, 106, 34,0.04)" stroke-width="1" />
+                        <line x1="155" y1="26" x2="155" y2="378" stroke="rgba(230, 106, 34,0.04)" stroke-width="1" />
+                        <!-- Route lines -->
+                        <polyline points="158,316 154,270 152,230 150,195 148,155 146,120 144,85"
+                            stroke="rgba(230, 106, 34,0.18)" stroke-width="1" stroke-dasharray="5,5" fill="none" />
+                        <line x1="154" y1="250" x2="172" y2="248" stroke="rgba(230, 106, 34,0.15)" stroke-width="1"
+                            stroke-dasharray="5,5" />
+                        <line x1="154" y1="270" x2="132" y2="298" stroke="rgba(230, 106, 34,0.15)" stroke-width="1"
+                            stroke-dasharray="5,5" />
+                        <!-- London -->
+                        <g class="hub-dot">
+                            <circle cx="158" cy="316" r="14" fill="rgba(230, 106, 34,0.08)"
+                                stroke="rgba(230, 106, 34,0.25)" stroke-width="1" />
+                            <circle cx="158" cy="316" r="6" fill="var(--gold)" filter="url(#glow)" /><text x="173"
+                                y="320" class="hub-label">London</text>
+                        </g>
+                        <!-- Birmingham -->
+                        <g class="hub-dot">
+                            <circle cx="152" cy="270" r="11" fill="rgba(230, 106, 34,0.08)"
+                                stroke="rgba(230, 106, 34,0.22)" stroke-width="1" />
+                            <circle cx="152" cy="270" r="5" fill="var(--gold)" filter="url(#glow)" /><text x="167"
+                                y="274" class="hub-label">Birmingham</text>
+                        </g>
+                        <!-- Manchester -->
+                        <g class="hub-dot">
+                            <circle cx="150" cy="230" r="10" fill="rgba(230, 106, 34,0.08)"
+                                stroke="rgba(230, 106, 34,0.22)" stroke-width="1" />
+                            <circle cx="150" cy="230" r="5" fill="var(--gold)" filter="url(#glow)" /><text x="165"
+                                y="234" class="hub-label">Manchester</text>
+                        </g>
+                        <!-- Leeds -->
+                        <g class="hub-dot">
+                            <circle cx="172" cy="248" r="8" fill="rgba(230, 106, 34,0.06)"
+                                stroke="rgba(230, 106, 34,0.18)" stroke-width="1" />
+                            <circle cx="172" cy="248" r="4" fill="rgba(230, 106, 34,0.75)" /><text x="182" y="252"
+                                class="hub-label">Leeds</text>
+                        </g>
+                        <!-- Bristol -->
+                        <g class="hub-dot">
+                            <circle cx="132" cy="298" r="8" fill="rgba(230, 106, 34,0.06)"
+                                stroke="rgba(230, 106, 34,0.18)" stroke-width="1" />
+                            <circle cx="132" cy="298" r="4" fill="rgba(230, 106, 34,0.75)" /><text x="95" y="302"
+                                class="hub-label">Bristol</text>
+                        </g>
+                        <!-- Newcastle -->
+                        <g class="hub-dot">
+                            <circle cx="155" cy="195" r="7" fill="rgba(230, 106, 34,0.05)"
+                                stroke="rgba(230, 106, 34,0.15)" stroke-width="1" />
+                            <circle cx="155" cy="195" r="3.5" fill="rgba(230, 106, 34,0.6)" /><text x="165" y="199"
+                                class="hub-label">Newcastle</text>
+                        </g>
+                        <!-- Edinburgh -->
+                        <g class="hub-dot">
+                            <circle cx="148" cy="140" r="7" fill="rgba(230, 106, 34,0.05)"
+                                stroke="rgba(230, 106, 34,0.15)" stroke-width="1" />
+                            <circle cx="148" cy="140" r="3.5" fill="rgba(230, 106, 34,0.6)" /><text x="158" y="144"
+                                class="hub-label">Edinburgh</text>
+                        </g>
+                        <!-- Cardiff -->
+                        <g class="hub-dot">
+                            <circle cx="128" cy="314" r="7" fill="rgba(230, 106, 34,0.05)"
+                                stroke="rgba(230, 106, 34,0.15)" stroke-width="1" />
+                            <circle cx="128" cy="314" r="3.5" fill="rgba(230, 106, 34,0.6)" /><text x="92" y="316"
+                                class="hub-label">Cardiff</text>
+                        </g>
+                        <!-- Legend -->
+                        <circle cx="108" cy="400" r="5" fill="var(--gold)" />
+                        <text x="120" y="404" class="hub-label" fill="rgba(230, 106, 34,0.6)">Primary Hub</text>
+                        <circle cx="108" cy="420" r="3.5" fill="rgba(230, 106, 34,0.6)" />
+                        <text x="120" y="424" class="hub-label" fill="rgba(230, 106, 34,0.6)">Regional Depot</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLUTIONS -->
+    <div id="page-solutions" class="page">
+        <div class="solutions-hero">
+            <div class="section-label">B2B Contract Services</div>
+            <h1 class="section-title" style="font-size:clamp(2.5rem,4vw,5rem);font-weight:300;">Logistics
+                <em>Solutions</em><br>Engineered for Enterprise
+            </h1>
+            <p style="color:var(--grey);max-width:600px;line-height:1.85;font-weight:300;">Strategic distribution
+                partnerships built around your operational requirements — not off-the-shelf service packages. Every
+                engagement begins with understanding your logistics DNA.</p>
+            <div class="sol-grid">
+                <div class="sol-card featured fade-in">
+                    <div class="sol-num">01</div>
+                    <h3>Dedicated Contract Distribution</h3>
+                    <p>Our flagship offering: a fully dedicated fleet of liveried vehicles and drivers operating
+                        exclusively for your business. Whether you need a single van or a multi-vehicle fleet, this is a
+                        partnership that integrates seamlessly into your supply chain as though it were your own
+                        internal transport division.</p>
+                    <div style="margin-top:1.5rem;font-size:0.82rem;opacity:0.75;line-height:1.9;">✓ Dedicated driver
+                        assignment<br>✓ Custom vehicle branding<br>✓ Fixed monthly cost model<br>✓ Priority SLA tier
+                    </div>
+                    <div class="sol-tag">Enquire Now</div>
+                </div>
+                <div class="sol-card fade-in fade-in-d1">
+                    <div class="sol-num">02</div>
+                    <h3>Same-Day Critical Freight</h3>
+                    <p>For time-critical B2B consignments where delay is not an option. Our same-day critical network
+                        serves pharmaceutical emergency runs, high-value component deliveries for aerospace and
+                        automotive sectors, and urgent retail replenishment. Direct, non-stop, fully tracked.</p>
+                    <div class="sol-tag">Critical Freight</div>
+                </div>
+                <div class="sol-card fade-in fade-in-d2">
+                    <div class="sol-num">03</div>
+                    <h3>Ad-Hoc Overflow Support</h3>
+                    <p>Peak season surges. Unexpected volume spikes. Driver shortages. When your internal fleet cannot
+                        absorb capacity demands, Prime Bite provides rapid-deployment overflow support within hours of
+                        request — maintaining your SLAs without interruption to your clients.</p>
+                    <div class="sol-tag">Rapid Deployment</div>
+                </div>
+            </div>
+        </div>
+        <div class="sla-band">
+            <div class="sla-inner">
+                <div>
+                    <div class="section-label">Performance</div>
+                    <div class="sla-pct">99%</div>
+                    <div
+                        style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);">
+                        On-Time Delivery</div>
+                </div>
+                <div>
+                    <h2
+                        style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;margin-bottom:2rem;">
+                        Service Level Agreements That Hold.</h2>
+                    <div class="sla-items">
+                        <div class="sla-item">
+                            <h4>Contractual KPIs</h4>
+                            <p>Every partnership is governed by documented SLAs with clear performance metrics,
+                                reporting cadence, and accountability structures aligned to your procurement standards.
+                            </p>
+                        </div>
+                        <div class="sla-item">
+                            <h4>Real-Time Reporting</h4>
+                            <p>Digital dashboards provide live fleet visibility, delivery confirmation, and exception
+                                management alerts — available to your operations team at all times.</p>
+                        </div>
+                        <div class="sla-item">
+                            <h4>Escalation Protocol</h4>
+                            <p>Dedicated account management with a direct escalation pathway to senior leadership. Your
+                                business continuity is never at the mercy of a call queue.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIRECTORATE -->
+    <div id="page-directorate" class="page">
+        <div class="dir-hero">
+            <div class="dir-hero-bg"></div>
+            <div class="dir-hero-content">
+                <div class="dir-photo fade-in">
+                    👔
+                    <div class="dir-photo-label">Managing Director — Prime Bite Ventures Ltd</div>
+                </div>
+                <div>
+                    <div class="section-label">The Directorate</div>
+                    <h1 class="section-title" style="font-size:clamp(2.2rem,3.5vw,4rem);">Visionary
+                        Leadership,<br><em>Grounded Experience.</em></h1>
+                    <p style="color:var(--grey);line-height:1.9;font-weight:300;margin-bottom:1.5rem;">At the heart of
+                        Prime Bite Ventures Ltd is a commitment to precision. Our founder and Managing Director
+                        established this firm with a single objective: to provide UK businesses with a level of
+                        logistical reliability that feels like an internal asset rather than an external cost.</p>
+                    <p style="color:var(--grey);line-height:1.9;font-weight:300;margin-bottom:1.5rem;">Under his
+                        leadership, Prime Bite has evolved from a vision into a nationwide B2B partner. By prioritizing
+                        driver welfare, vehicle technology, and client transparency, every mile driven under our name
+                        adds value to yours.</p>
+                    <p style="color:var(--grey);line-height:1.9;font-weight:300;">With a deep-rooted passion for
+                        operational excellence, our Managing Director founded Prime Bite Ventures Ltd to restore the
+                        'partnership' in logistics. His focus remains on high-level compliance and the integration of
+                        smart-tech within the van service sector.</p>
+                    <div class="dir-quote">
+                        "Our clients don't just hire a van; they hire a promise of continuity."
+                        <cite>— Managing Director, Prime Bite Ventures Ltd</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="guarantee-section">
+            <div class="guarantee-inner">
+                <div>
+                    <h2>A Personal Statement of Quality</h2>
+                    <p>Every contract fulfilled under the Prime Bite banner carries with it my personal assurance. Not a
+                        corporate disclaimer — a direct commitment from the individual who built this company. Our
+                        operational standards are not policy documents. They are principles I hold personally
+                        accountable.</p>
+                    <div class="signature">[Your Name]</div>
+                    <div class="sig-title">Managing Director — Prime Bite Ventures Ltd</div>
+                </div>
+                <div
+                    style="padding:3rem;background:rgba(251, 247, 239,0.08);border:1px solid rgba(251, 247, 239,0.18);">
+                    <div
+                        style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(251, 247, 239,0.55);margin-bottom:1.5rem;">
+                        Statement of Quality — Prime Bite Ventures Ltd</div>
+                    <p style="color:rgba(251, 247, 239,0.75);font-weight:300;line-height:1.9;font-size:0.9rem;">I
+                        personally
+                        guarantee that every client engagement undertaken by Prime Bite Ventures Ltd will be delivered
+                        with the same level of care, precision and accountability that I demand of myself. Where we fall
+                        short, I commit to making it right — without bureaucracy or delay. This is not a service. This
+                        is a partnership. And I take that seriously.</p>
+                    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(251, 247, 239,0.12);">
+                        <div
+                            style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-style:italic;color:var(--navy);">
+                            [Your Name]</div>
+                        <div
+                            style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(251, 247, 239,0.38);margin-top:0.2rem;">
+                            Managing Director, Prime Bite Ventures Ltd</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPLIANCE -->
+    <div id="page-compliance" class="page">
+        <section>
+            <div class="section-label">Compliance &amp; Fleet</div>
+            <h1 class="section-title" style="font-size:clamp(2.2rem,3.5vw,4.5rem);">The <em>Heavyweight</em>
+                Proof.<br>Built for Procurement Review.</h1>
+            <p style="color:var(--grey);max-width:650px;line-height:1.85;font-weight:300;">Large organisations require
+                more than a handshake. This section exists for your procurement, legal, and health &amp; safety teams to
+                conduct due diligence with full confidence.</p>
+            <div class="fleet-grid">
+                <div class="fleet-card fade-in">
+                    <div class="fleet-icon">🚐</div>
+                    <h3>Fleet Specification</h3>
+                    <p>All vehicles are Euro 6 compliant, fully liveried in Prime Bite livery, and maintained under a
+                        rigorous preventative maintenance schedule. Average fleet age is under 2 years.</p>
+                    <div><span class="fleet-badge">Euro 6</span><span class="fleet-badge">Under 2yr Avg Age</span></div>
+                </div>
+                <div class="fleet-card fade-in fade-in-d1">
+                    <div class="fleet-icon">📡</div>
+                    <h3>GPS &amp; Telematics</h3>
+                    <p>100% of the active fleet operates with live GPS tracking, speed monitoring, and driver behaviour
+                        analytics. Real-time ETAs and digital proof of delivery (ePOD) are standard across all service
+                        tiers.</p>
+                    <div><span class="fleet-badge">Live GPS</span><span class="fleet-badge">ePOD Standard</span></div>
+                </div>
+                <div class="fleet-card fade-in fade-in-d2">
+                    <div class="fleet-icon">🔒</div>
+                    <h3>Goods In Transit Insurance</h3>
+                    <p>Comprehensive Goods In Transit cover to £25,000 per consignment as standard, with higher limits
+                        available via endorsement. Full Public Liability Insurance to £5M in force.</p>
+                    <div><span class="fleet-badge">£5M Public Liability</span></div>
+                </div>
+                <div class="fleet-card fade-in">
+                    <div class="fleet-icon">📋</div>
+                    <h3>Driver Compliance</h3>
+                    <p>All drivers hold valid UK licences, undergo annual CPC training, and operate under Working Time
+                        Directive compliance monitoring. Criminal background checks and DVLA licence validation
+                        conducted on employment and annually.</p>
+                    <div><span class="fleet-badge">CPC Trained</span><span class="fleet-badge">WTD Compliant</span>
+                    </div>
+                </div>
+                <div class="fleet-card fade-in fade-in-d1">
+                    <div class="fleet-icon">🌿</div>
+                    <h3>Sustainability</h3>
+                    <p>Route optimisation software reduces empty running by an average of 23%, directly lowering our
+                        carbon output per consignment. We are actively transitioning to zero-emission vehicles in line
+                        with UK Net Zero 2050 commitments.</p>
+                    <div><span class="fleet-badge">Route Optimised</span><span class="fleet-badge">EV Transition
+                            2027</span></div>
+                </div>
+                <div class="fleet-card fade-in fade-in-d2">
+                    <div class="fleet-icon">📄</div>
+                    <h3>Documentation &amp; Audit</h3>
+                    <p>Full Operator Licence documentation available upon request. ISO-aligned operational procedures
+                        with complete audit trail capability for regulated industries including pharmaceutical and
+                        food-grade distribution.</p>
+                    <div><span class="fleet-badge">Operator Licensed</span></div>
+                </div>
+            </div>
+        </section>
+        <div class="compliance-band">
+            <div class="compliance-inner">
+                <div class="section-label">Insurance &amp; Safety Summary</div>
+                <h2 class="section-title">Covered. <em>Compliant.</em> Accountable.</h2>
+                <div class="compliance-cols">
+                    <div class="comp-col">
+                        <h3>Insurance Schedule</h3>
+                        <ul class="comp-list">
+                            <li>Public Liability: £5,000,000</li>
+                            <li>Goods In Transit: £25,000 std.</li>
+                            <li>Employer's Liability: £10,000,000</li>
+                            <li>Fleet Insurance: Comprehensive</li>
+                            <li>Professional Indemnity: Available</li>
+                        </ul>
+                    </div>
+                    <div class="comp-col">
+                        <h3>Regulatory Status</h3>
+                        <ul class="comp-list">
+                            <li>Operator Licence: Standard National</li>
+                            <li>DVLA Compliance: Verified Monthly</li>
+                            <li>HMRC Compliant: VAT Registered</li>
+                            <li>Companies House: Active Registration</li>
+                            <li>ICO Registered: Data Protection</li>
+                        </ul>
+                    </div>
+                    <div class="comp-col">
+                        <h3>Sustainability KPIs</h3>
+                        <ul class="comp-list">
+                            <li>23% Reduction: Empty Running</li>
+                            <li>Route Optimisation: AI-Powered</li>
+                            <li>EV Transition: 2027 Target</li>
+                            <li>Carbon Reporting: Available</li>
+                            <li>ISO 14001: In Progress</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTNER -->
+    <div id="page-partner" class="page">
+        <div class="partner-hero">
+            <div class="section-label">Partner With Us</div>
+            <h1 class="section-title" style="font-size:clamp(2.5rem,4vw,5rem);font-weight:300;">Begin the
+                <em>Conversation.</em>
+            </h1>
+            <p style="color:var(--grey);max-width:600px;line-height:1.85;font-weight:300;">This is not a contact form.
+                This is the first step in what we hope will be a long-term operational partnership. Complete the brief
+                below and a senior member of our business development team will contact you within 4 business hours.</p>
+        </div>
+        <div class="partner-grid">
+            <div>
+                <div class="quote-form">
+                    <div class="form-title">Partnership Enquiry</div>
+                    <div id="quoteForm">
+                        <div class="form-grid-2">
+                            <div class="form-row"><label>Company Name *</label><input type="text"
+                                    placeholder="Your organisation"></div>
+                            <div class="form-row"><label>Industry Sector *</label><select>
+                                    <option value="">Select Sector</option>
+                                    <option>Pharmaceuticals</option>
+                                    <option>Aerospace &amp; Defence</option>
+                                    <option>High-Street Retail</option>
+                                    <option>Automotive Parts</option>
+                                    <option>Electronics</option>
+                                    <option>Food &amp; Beverage</option>
+                                    <option>Healthcare Equipment</option>
+                                    <option>Government / Public Sector</option>
+                                    <option>Construction Materials</option>
+                                    <option>Other</option>
+                                </select></div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-row"><label>Contact Name *</label><input type="text"
+                                    placeholder="Full name"></div>
+                            <div class="form-row"><label>Job Title</label><input type="text" placeholder="Your role">
+                            </div>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-row"><label>Email Address *</label><input type="email"
+                                    placeholder="name@company.co.uk"></div>
+                            <div class="form-row"><label>Phone Number</label><input type="tel" placeholder="+44"></div>
+                        </div>
+                        <div class="form-row"><label>Estimated Monthly Volume</label><select>
+                                <option value="">Select Volume Range</option>
+                                <option>Under 100 deliveries/month</option>
+                                <option>100–500 deliveries/month</option>
+                                <option>500–2,000 deliveries/month</option>
+                                <option>2,000–10,000 deliveries/month</option>
+                                <option>10,000+ deliveries/month</option>
+                            </select></div>
+                        <div class="form-row"><label>Service Required</label><select>
+                                <option>Dedicated Contract Distribution</option>
+                                <option>Same-Day Critical Freight</option>
+                                <option>Ad-Hoc Overflow Support</option>
+                                <option>Multiple / Not Yet Determined</option>
+                            </select></div>
+                        <div class="form-row"><label>Additional Context</label><textarea
+                                placeholder="Tell us about your current logistics setup, key pain points, or any specific requirements..."></textarea>
+                        </div>
+                        <button class="form-submit" onclick="submitForm()">Submit Partnership Enquiry →</button>
+                    </div>
+                    <div id="formSuccess" class="form-success">
+                        <div class="form-success-icon">✓</div>
+                        <h3>Enquiry Received.</h3>
+                        <p>A senior team member will contact you within 4 business hours.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="contact-card">
+                    <h3>Priority Partner Line</h3>
+                    <p>For existing clients and urgent operational matters:</p>
+                    <div class="priority-num">+44 (0)20 XXXX XXXX</div>
+                    <p style="font-size:0.78rem;color:rgba(158,117,77,0.55);margin-top:0.3rem;">Available 06:00–22:00,
+                        7 days a week</p>
+                </div>
+                <div class="contact-card">
+                    <h3>UK Headquarters</h3>
+                    <p>Prime Bite Ventures Ltd<br><br>[Unit / Building Name]<br>[Street Address]<br>London,
+                        [Postcode]<br>United Kingdom</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Business Development</h3>
+                    <p>partnerships@primebiteventures.co.uk</p>
+                    <p style="margin-top:1rem;font-size:0.8rem;color:rgba(158,117,77,0.5);">Media &amp; press:
+                        press@primebiteventures.co.uk</p>
+                </div>
+                <div class="contact-card" style="border-left:3px solid var(--gold);">
+                    <h3>Response Commitment</h3>
+                    <p>All partnership enquiries are reviewed and responded to within <strong
+                            style="color:var(--gold);">4 business hours</strong> by a named member of our business
+                        development team. You will never receive an automated acknowledgement as your only response.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="nav-logo" onclick="showPage('home')">Prime Bite <span>Ventures</span></div>
+                <p>A national B2B logistics partner delivering reliability, compliance and operational excellence to UK
+                    enterprise clients across every major industry sector.</p>
+                <p style="margin-top:1rem;font-size:0.78rem;color:rgba(158,117,77,0.45);">Company Registration:
+                    [XXXXXXXX] — VAT: [XXXXXXXXX]<br>Operator Licence: [OXXXXXXXXX]</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a onclick="showPage('home')">Home</a></li>
+                    <li><a onclick="showPage('solutions')">Solutions</a></li>
+                    <li><a onclick="showPage('directorate')">The Directorate</a></li>
+                    <li><a onclick="showPage('compliance')">Compliance &amp; Fleet</a></li>
+                    <li><a onclick="showPage('partner')">Partner With Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Services</h4>
+                <ul>
+                    <li><a onclick="showPage('solutions')">Contract Distribution</a></li>
+                    <li><a onclick="showPage('solutions')">Same-Day Freight</a></li>
+                    <li><a onclick="showPage('solutions')">Ad-Hoc Support</a></li>
+                    <li><a onclick="showPage('solutions')">SLA Management</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Modern Slavery Act</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 Prime Bite Ventures Ltd. All Rights Reserved.</span>
+            <span>Registered in England &amp; Wales</span>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            }
+        }
+
+        function closeMenu() {
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle && navLinks) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const el = document.getElementById('page-' + id);
+            if (el) { el.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); initObserver(); }
+            closeMenu();
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        function submitForm() {
+            document.getElementById('quoteForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        }
+
+        function initObserver() {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.page.active .fade-in').forEach(el => obs.observe(el));
+        }
+
+        // Initial load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Trigger hero fade-ins
+            setTimeout(() => {
+                document.querySelectorAll('.page.active .fade-in').forEach(el => el.classList.add('visible'));
+            }, 100);
+            initObserver();
+        });
+    </script>
+</body>
+
+</html>
